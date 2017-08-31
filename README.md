@@ -1,3 +1,15 @@
+This project integrates the necessary stack of a modern UI that works for any app.
+- ServiceWorker for offline support
+- Redux for unidirectional state flow
+- React for rendering presentation and interaction
+- Firebase for auth & push to client for database updates
+----
+To run the server locally,
+- `npm run local-server`
+To run the client app only for development purposes,
+- `npm start`
+----
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

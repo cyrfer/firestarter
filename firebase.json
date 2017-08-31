@@ -1,13 +1,21 @@
-{
+  {
   "database": {
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "public-fb",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "app"
+      }
     ]
+  },
+  "functions": {
+    "source": "functions"
   }
 }

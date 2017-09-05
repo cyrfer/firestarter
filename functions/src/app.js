@@ -3,23 +3,8 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 
-const initialState = {};
-
-const appReducer = (previousState = initialState, action) => {
-    return previousState;
-};
-
-const App = () => {
-    return (
-    <div>
-        <div>hello react</div>
-    </div>
-    );
-};
-
-// import appReducer from './reducers'
-// import App from './containers/App'
-// import App from '../src/App'
+import appReducer from './reducers'
+import App from './containers/App'
 
 function renderFullPage(html, preloadedState) {
     return `

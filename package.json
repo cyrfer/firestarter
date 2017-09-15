@@ -16,7 +16,7 @@
     "upgrade-local-emulator": "npm uninstall -g @google-cloud/functions-emulator && npm install -g @google-cloud/functions-emulator && open https://firebase.google.com/docs/functions/local-emulator",
     "test-firebase": "open https://firebase.google.com/docs/functions/unit-testing",
     "test-fb": "mocha functions/test --reporter spec",
-    "babel": "babel src-ssr/ -d functions/dist/ --presets es2015,stage-2,react"
+    "babel": "babel src/ -d functions/dist/ --presets es2015,stage-2,react"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

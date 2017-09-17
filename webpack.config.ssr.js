@@ -2,6 +2,18 @@ const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
 const nodeModules = {};
+const plugins = [];
+
+if (process.env.NODE_ENV !== 'production') {
+    plugins.push(
+        // from http://jlongster.com/Backend-Apps-with-Webpack--Part-I
+        new webpack.BannerPlugin({
+            banner: 'require("source-map-support").install();',
+            raw: true,
+            entryOnly: false
+        })
+    );
+}
 
 fs.readdirSync('node_modules')
   .filter(function(x) {
@@ -24,6 +36,7 @@ module.exports = {
         libraryTarget: 'commonjs2'
     },
     externals: nodeModules,
+    plugins: plugins,
     module: {
         rules: [
             {

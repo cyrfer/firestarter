@@ -1,8 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const fs = require('fs');
 const nodeModules = {};
-const plugins = [];
+const plugins = [
+    new ExtractTextPlugin('style.css', { allChunks: true }),
+];
 
 if (process.env.NODE_ENV !== 'production') {
     plugins.push(
@@ -27,7 +30,9 @@ module.exports = {
     target: 'node',
     entry: {
         reducers: './src/reducers/index.js',
-        'containers/App': './src/containers/App.js'
+        'containers/App': './src/containers/App.js',
+        // TODO: point to './src/index.css', and make index.css import App.css
+        'styles': './src/containers/App.css'
     },
     output: {
         path: path.resolve(__dirname, "functions/dist"),
@@ -66,10 +71,54 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2015','stage-2','react']
+                        presets: ['es2015','stage-2','react'],
+                        // "plugins": [
+                        //     [
+                        //         "css-modules-transform", {
+                        //             "generateScopedName": "[hash:8]",
+                        //             "extensions": [".css"]
+                        //         }
+                        //     ]
+                        // ]
                     }
                 }
+            },
+
+            // {
+            //     test: /\.css$/,
+            //     use: ExtractTextPlugin.extract({
+            //         use: "css-loader"
+            //     })
+            // }
+
+            {
+                test: /\.css$/,
+                use: [
+                      'to-string-loader',
+                    // 'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
+                ]
             }
+
+            // {
+            //     test: /\.css$/,
+            //     loader: ExtractTextPlugin.extract({
+            //         loader: [
+            //             {
+            //                 loader: 'css-loader',
+            //                 query: {
+            //                     localIdentName: '[hash:8]',
+            //                     modules: true
+            //                 }
+            //             }
+            //         ]
+            //     })
+            // }
         ]
     }
 };

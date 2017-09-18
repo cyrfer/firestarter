@@ -8,8 +8,9 @@ const ssr = require('./lib/app-ssr');
 
 const appReducer = require('./dist/reducers').default;
 const App = require('./dist/containers/App').default;
+const styles = require('./dist/styles.js');
 
 // TODO: specify routes for API here
-app.get('/*', ssr.handleRender(appReducer, App));
+app.get('/*', ssr.handleRender(styles, appReducer, App));
 admin.initializeApp(functions.config().firebase);
 exports.app = functions.https.onRequest(app);

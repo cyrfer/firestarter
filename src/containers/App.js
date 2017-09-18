@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Logo from './logo.svg';
-// import './App.css';
 
 class DataCard extends Component {
   render() {

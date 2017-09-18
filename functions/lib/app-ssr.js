@@ -7,7 +7,7 @@ const Provider = require('react-redux').Provider;
 const reactDom = require('react-dom/server');
 const page = require('./page');
 
-exports.handleRender = function (appReducer, App) {
+exports.handleRender = function (styles, appReducer, App) {
     return function (req, res) {
         // Create a new Redux store instance
         const store = redux.createStore(appReducer);
@@ -28,6 +28,6 @@ exports.handleRender = function (appReducer, App) {
         const preloadedState = store.getState();
 
         // Send the rendered page back to the client
-        res.send(page.renderFullPage(html, preloadedState));
+        res.send(page.renderFullPage(styles, html, preloadedState));
     };
 };

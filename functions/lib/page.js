@@ -1,11 +1,12 @@
 'use strict';
 
-exports.renderFullPage = function (html, preloadedState) {
+exports.renderFullPage = function (styles, html, preloadedState) {
     return `
 <!doctype html>
 <html>
     <head>
         <title>Redux Universal Example</title>
+        <style>${styles}</style>
     </head>
     <body>
         <div id="root">${html}</div>

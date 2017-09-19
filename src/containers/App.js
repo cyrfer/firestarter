@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Logo from './logo.svg';
+// import Logo from './logo.svg';
 import './App.css';
 
 class DataCard extends Component {
@@ -46,7 +46,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <Logo />
+          {/*<Logo />*/}
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">

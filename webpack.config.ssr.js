@@ -7,16 +7,16 @@ const plugins = [
     new ExtractTextPlugin('style.css', { allChunks: true }),
 ];
 
-if (process.env.NODE_ENV !== 'production') {
-    plugins.push(
-        // from http://jlongster.com/Backend-Apps-with-Webpack--Part-I
-        new webpack.BannerPlugin({
-            banner: 'require("source-map-support").install();',
-            raw: true,
-            entryOnly: false
-        })
-    );
-}
+// if (process.env.NODE_ENV !== 'production') {
+//     plugins.push(
+//         // from http://jlongster.com/Backend-Apps-with-Webpack--Part-I
+//         new webpack.BannerPlugin({
+//             banner: 'require("source-map-support").install();',
+//             raw: true,
+//             entryOnly: false
+//         })
+//     );
+// }
 
 fs.readdirSync('node_modules')
   .filter(function(x) {
@@ -31,8 +31,6 @@ module.exports = {
     entry: {
         reducers: './src/reducers/index.js',
         'containers/App': './src/containers/App.js',
-        // TODO: point to './src/index.css', and make index.css import App.css
-        'styles': './src/containers/App.css'
     },
     output: {
         path: path.resolve(__dirname, "functions/dist"),
@@ -84,25 +82,11 @@ module.exports = {
                 }
             },
 
-            // {
-            //     test: /\.css$/,
-            //     use: ExtractTextPlugin.extract({
-            //         use: "css-loader"
-            //     })
-            // }
-
             {
                 test: /\.css$/,
-                use: [
-                      'to-string-loader',
-                    // 'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true
-                        }
-                    }
-                ]
+                use: ExtractTextPlugin.extract({
+                    use: "css-loader"
+                })
             }
 
             // {

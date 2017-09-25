@@ -4,6 +4,9 @@ This project integrates the necessary stack of a modern UI that works for any ap
 - React for rendering presentation and interaction
 - Firebase for auth & push to client for database updates
 ----
+To prepare code to run,
+- `npm i -g firebase firebase-tools`
+- `firebase login`
 To run the server locally,
 - `npm run local-server`
 To run the client app only for development purposes,

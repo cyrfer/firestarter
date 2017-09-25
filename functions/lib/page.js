@@ -1,11 +1,12 @@
 'use strict';
 
-exports.renderFullPage = function (html, preloadedState) {
+exports.renderFullPage = function (styles, html, bundleRoute, preloadedState) {
     return `
 <!doctype html>
 <html>
     <head>
         <title>Redux Universal Example</title>
+        <style>${styles}</style>
     </head>
     <body>
         <div id="root">${html}</div>
@@ -14,7 +15,7 @@ exports.renderFullPage = function (html, preloadedState) {
 // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
 window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="${bundleRoute}"></script>
     </body>
 </html>
 `

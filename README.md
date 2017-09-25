@@ -5,12 +5,11 @@ This project integrates the necessary stack of a modern UI that works for any ap
 - Firebase for auth & push to client for database updates
 ----
 To prepare code to run,
-- `npm i -g firebase firebase-tools`
-- `firebase login`
-To run the server locally,
-- `npm run local-server`
-To run the client app only for development purposes,
-- `npm start`
+- `npm i -g firebase firebase-tools` to install emulation
+- `firebase login` to authenticate for server mulation
+- `npm run build` to build optimized static assets
+- `npm run local-server` to run the server locally
+- `npm start` to run the client app only for development purposes
 ----
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

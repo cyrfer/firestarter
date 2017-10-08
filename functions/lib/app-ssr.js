@@ -5,29 +5,25 @@ const redux = require('redux');
 // TODO: ES5 must use `.Provider` ?
 const Provider = require('react-redux').Provider;
 const reactDom = require('react-dom/server');
-const page = require('./page');
 
-exports.handleRender = function (styles, appReducer, App, bundleRoute) {
+exports.handleRender = function (appReducer, App, renderTemplateFn, context) {
     return function (req, res) {
         // Create a new Redux store instance
         const store = redux.createStore(appReducer);
 
         // Render the component to a string
-        const html = reactDom.renderToString(
+        context.html = reactDom.renderToString(
             React.createElement(
                 Provider,
                 { store: store },
                 React.createElement(App, null)
-            )
-        // <Provider store={store}>
-        //     <App />
-        // </Provider>
-        );
+            ));
 
         // Grab the initial state from our Redux store
-        const preloadedState = store.getState();
+        context.preloadedState = store.getState();
 
         // Send the rendered page back to the client
+        res.send(renderTemplate(context));
         res.send(page.renderFullPage(styles, html, bundleRoute, preloadedState));
     };
 };

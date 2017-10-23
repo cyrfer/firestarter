@@ -6,7 +6,7 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.12"
+    "react-scripts": "1.0.14"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,7 +19,7 @@
     "test-fb": "mocha functions/test --reporter spec",
     "babel": "babel src/ -d functions/dist/ --presets es2015,stage-2,react",
     "postbuild": "copyfiles -f build/**/*.css build/asset-manifest.json functions/dist",
-    "webpack": "webpack --config webpack.config.ssr.js"
+    "webpack": "npm run build && rm build/index.html && webpack --config webpack.config.ssr.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

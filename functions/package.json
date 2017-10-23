@@ -10,6 +10,7 @@
     "redux": "^3.7.2"
   },
   "scripts": {
+    "serve": "firebase serve --only functions",
     "babel": "babel src/ -d dist/ --presets es2015,stage-2,react",
     "test": "mocha --reporter spec"
   },

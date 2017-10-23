@@ -6,7 +6,7 @@ exports.renderFullPage = function (context) {
 <html>
     <head>
         <title>Redux Universal Example</title>
-        <style>${context.styles}</style>
+        <style id="ssr-styles">${context.styles}</style>
     </head>
     <body>
         <div id="root">${context.html}</div>
@@ -15,7 +15,7 @@ exports.renderFullPage = function (context) {
 // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
 window.__PRELOADED_STATE__ = ${JSON.stringify(context.preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="${context.bundleRoute}"></script>
+        <script src="${context.bundleRoute}" async></script>
     </body>
 </html>
 `

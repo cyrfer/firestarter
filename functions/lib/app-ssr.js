@@ -23,7 +23,6 @@ exports.handleRender = function (appReducer, App, renderTemplateFn, context) {
         context.preloadedState = store.getState();
 
         // Send the rendered page back to the client
-        res.send(renderTemplate(context));
-        res.send(page.renderFullPage(styles, html, bundleRoute, preloadedState));
+        res.send(renderTemplateFn(context));
     };
 };

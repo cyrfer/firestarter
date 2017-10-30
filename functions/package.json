@@ -3,14 +3,14 @@
   "description": "Cloud Functions for Firebase",
   "dependencies": {
     "express": "^4.15.4",
-    "firebase-admin": "~4.2.1",
-    "firebase-functions": "^0.5.7",
+    "firebase-admin": "^5.4.3",
+    "firebase-functions": "^0.7.1",
     "react": "^15.6.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   },
   "scripts": {
-    "serve": "firebase serve --only functions",
+    "serve": "firebase serve --only functions --port=9000",
     "babel": "babel src/ -d dist/ --presets es2015,stage-2,react",
     "test": "mocha --reporter spec"
   },

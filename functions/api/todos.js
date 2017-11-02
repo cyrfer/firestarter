@@ -2,9 +2,22 @@ const admin = require('firebase-admin');
 const db = admin.firestore();
 const cname = 'todos';
 
-exports.query = (req, res) => {
+exports.queryAll = (req, res) => {
     db.collection(cname)
-        .doc(req.params.id)
+        .get()
+        .then(snapshot => {
+            const all = [];
+            snapshot.forEach((d) => { all.push(d.data()); });
+            res.status(200).json(all);
+        })
+        .catch(err => {
+            console.log('api/todos/queryAll', err);
+            res.status(500).json(err);
+        });
+};
+
+exports.queryById = (req, res) => {
+    db.collection(cname).doc(req.params.id)
         .get()
         .then((d) => {
             if (!d.exists) {

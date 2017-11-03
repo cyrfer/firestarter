@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import {
+  END_FETCH,
   ADD_TODO,
   TOGGLE_TODO,
   SET_VISIBILITY_FILTER,
@@ -18,13 +19,12 @@ function visibilityFilter(state = SHOW_ALL, action) {
 
 function todos(state = [], action) {
   switch (action.type) {
+    case END_FETCH:
+      return action.data
     case ADD_TODO:
       return [
         ...state,
-        {
-          text: action.text,
-          completed: false
-        }
+        action.data
       ]
     case TOGGLE_TODO:
       return state.map((todo, index) => {

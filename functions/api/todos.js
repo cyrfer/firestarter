@@ -1,5 +1,4 @@
-const admin = require('firebase-admin');
-const db = admin.firestore();
+const db = require('../lib/firebase').db;
 const cname = 'todos';
 
 exports.queryAll = (req, res) => {

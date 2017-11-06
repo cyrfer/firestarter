@@ -1,7 +1,6 @@
 'use strict';
 
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
+const functions = require('./lib/firebase').functions;
 const express = require('express');
 const app = express();
 const ssr = require('./lib/app-ssr');
@@ -10,8 +9,6 @@ const path = require('path');
 const fs = require('fs');
 // TODO: learn how to authorize tokens from Firebase Auth
 // const authorizationMiddleware = require('./lib/authorization');
-
-admin.initializeApp(functions.config().firebase);
 
 // -- byproducts of client source build
 const manifest = require('./dist/asset-manifest.json');
